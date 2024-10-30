@@ -1,0 +1,105 @@
+<?php
+// class LoomupAdmin
+// {
+//     public $url = 'http://jane.agency:8888/clients/loomup/api/wordpress/api/';
+//
+//     private $result = '';
+//
+//     public $adminLoomupTemplate;
+//
+//     public $data = [ 'video_id' => 1 ];
+//
+//     private $admin_loomup;
+//
+//     function __construct()
+//     {
+//
+//     }
+//
+//     private function integrite ($array)
+//     {
+//         if($array['status'] == 200)
+//         {
+//             return true;
+//         }
+//         else
+//         {
+//              switch ($array['status'])
+//              {
+//                 case 204:
+//                     $this->admin_loomup->title = "Vieullez fournir votre clé cliente.";
+//                     break;
+//                 case 406:
+//                     $this->admin_loomup->title = "Votre clé cliente n'est pas correcte.";
+//                     break;
+//                 case 500:
+//                     $this->admin_loomup->title = "Une erreur serveur est survenue.";
+//                     break;
+//             }
+//             return false;
+//         }
+//     }
+//
+//     public function _get($what,$data)
+//     {
+//          if(get_option('loomup_key') )
+//         {
+//             $data['loomup_key'] = get_option('loomup_key');
+//
+//             $api = $this->callAPI("GET",$this->url.$what,$data);
+//
+//             if($api['status'] != 200)
+//             {
+//                 return $api;
+//             }
+//             return $api;
+//         }
+//         else{
+//             return $this->integrite(['status'=>204]);
+//         }
+//     }
+//
+//     private function callAPI($method, $url, $data = false)
+//     {
+//
+//         $curl = curl_init(sprintf("%s?%s", $url, http_build_query($data)));
+//
+//         switch ($method)
+//         {
+//             case "POST":
+//                 curl_setopt($curl, CURLOPT_POST, 1);
+//
+//                 if ($data)
+//                     curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+//                 break;
+//             case "PUT":
+//                 curl_setopt($curl, CURLOPT_PUT, 1);
+//                 break;
+//             default:
+//                 if ($data)
+//                     $url = sprintf("%s?%s", $url, http_build_query($data));
+//         }
+//         // Optional Authentication:
+//         // curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+//         // curl_setopt($curl, CURLOPT_USERPWD, "username:password");
+//
+//         curl_setopt($curl, CURLOPT_URL, $url);
+//         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+//         // curl_setopt($curl, CURLOPT_HEADER, 1);
+//
+//         $result = curl_exec($curl);
+//
+//         $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+//         curl_close($curl);
+//
+//         if($httpcode == 200)
+//         {
+//             return array('status' => $httpcode,'msg'=>json_decode($result));
+//         }
+//         else
+//         {
+//             return array('status' => $httpcode,'msg'=> $httpcode);
+//         }
+//     }
+// }
+// $loomupAdmin = new LoomupAdmin();
